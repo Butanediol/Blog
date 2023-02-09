@@ -104,14 +104,18 @@ struct SystemResizeButton: Component {
 }
 
 struct SystemTitle: Component {
-	let text: String
+	@ComponentBuilder let content: Component
 
 	init(_ text: String) {
-		self.text = text
+		self.content = Span(text)
+	}
+
+	init(@ComponentBuilder content: @escaping ContentProvider) {
+		self.content = content()
 	}
 
 	var body: Component {
-		H1(text)
+		content
             .class("title")
 	}
 }

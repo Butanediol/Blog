@@ -2,11 +2,8 @@
 title: Linux 上的 Swift 开发环境
 date: 2021-08-24 20:50
 updated: 2021-08-24 20:50
+description: 最近用 Swift 重写了 TelegramBot，发现写起来比 Python 版的爽太多。
 ---
-
-最近用 Swift 重写了 TelegramBot，发现写起来比 Python 版的爽太多。
-
-<!-- more -->
 
 其实想要在 Linux 上写 Swift 的话，装一个 toolchain 就完事了，毕竟有记事本和一个 terminal 就够了，但只是安装 toolchain 的话就没什么意思了，不光要写，还要写得爽才行！
 
@@ -80,20 +77,23 @@ updated: 2021-08-24 20:50
 
 ### 插件
 
-- Swift Language
+#### Swift Language
 
 代码高亮
 
-- Maintained Swift Development Environment
+#### Maintained Swift Development Environment
 
 这个插件包括了打断点（Linux 上似乎不太好所以）和代码补全，需要修改的设置如下：
 
 **Sde > Enable Tracing: LSPServer** Enable
+
 **Sde: Language Server Mode** sourcekit-lsp
+
 **Sourcekit-lsp: Server Path** /usr/bin/sourcekit-lsp
+
 **Sourcekit-lsp: Toolchain Path** /usr/bin
 
-- SourceKit-LSP
+#### SourceKit-LSP
 
 如果你不想用上面那个，你还可以使用这个[苹果官方的插件](https://github.com/apple/sourcekit-lsp/blob/main/Editors/vscode/README.md)，需要自行编译。
 

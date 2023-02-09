@@ -1,17 +1,13 @@
 ---
 title: Windows 10 专业电竞战斗版虚拟机半日游（认真脸）
 tags: Windows, Virtualbox, Ghost
+description: 专业的装机师傅才会装的 Windows 10 专业电竞战斗版泄漏！
 categoires: 瞎折腾
 index_img: /media/posts_img/win10esports_index.jpg
 banner_img: /media/posts_img/win10esports.jpg
 date: 2020-09-28 01:18
 updated: 2020-09-28 01:18
 ---
-
-
-专业的装机师傅才会装的 Windows 10 专业电竞战斗版泄漏！
-
-<!-- more -->
 
 今天有一份 Windows 10 专业微电竞战斗版泄漏，年纪轻轻的我哪里见过这种场面，赶紧装了一个试试。
 

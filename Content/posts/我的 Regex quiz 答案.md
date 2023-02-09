@@ -14,22 +14,20 @@ summary: 我的 regex101.com quiz 答案与总结。
 categories: 写代码
 ---
 
-```note.info
+{% note info %}
 在哪里可以做到题目？[Regex101.com](https://regex101.com)
-endnote
-```
+{% endnote %}
 
 ## TASK 1 WORD BOUNDARIES
 
 > Check if a string contains the word `word` in it (case insensitive). If you have no idea, I guess you could try /word/.
 
-```note.success
+{% note success %}
 我的答案 (11/11)：
-```regexp
+\`\`\`regexp
 /\bword\b/i
-```
-endnote
-```
+\`\`\`
+{% endnote %}
 
 `\b` 表示单词的边界。
 `/i` 标记大小写不敏感。
@@ -37,19 +35,11 @@ endnote
 ## TASK 2 CAPITIALIZING I
 
 > Use substitution to replace every occurrence of the word `i` with the word `I` (uppercase, I as in me). E.g.: `i'm replacing it. am i not?` -> `I'm replacing it. am I not?`. A regex match is replaced with the text in the `Substitution` field when using substitution.
+
 > 就是把单独的 i 换成 I。（将英语里应该是「我」的 i 都改成大写。）
 
 {% note success %}
-我的答案 (9/9)：
-REGULAR EXPRESSION
-```regexp
-/\bi\b/g
-```
-
-SUBSTITUTION
-```
-I
-```
+我的答案 (9/9)：`s/\bi\b/I/g`
 {% endnote %}
 
 `\b` 表示单词的边界。
@@ -60,22 +50,17 @@ I
 ## TASK 3 UPPERCASE CONSONANTS
 
 > With regex you can count the number of matches. Can you make it return the number of uppercase consonants (B,C,D,F,..,X,Y,Z) in a given string? E.g.: it should return 3 with the text ABcDeFO!. Note: Only ASCII. We consider Y to be a consonant! Example: the regex /./g will return 3 when run against the string abc.
+
 > 找到所有的大写辅音字母： `BCDFGHJKLMNPQRSTVWXYZ`
 
 {% note warning %}
-我的答案 (32/16)：
-```regexp
-/[B-D]|[F-H]|[J-N]|[P-T]|[V-Z]/g
-```
+我的答案 (32/16)：`/[B-D]|[F-H]|[J-N]|[P-T]|[V-Z]/g`
 {% endnote %}
 
 这个我真不会（。
 
 {% note warning %}
-更靠谱的答案 (19/16)：
-```regexp
-/(?![AEIOU])[A-Z]/g
-```
+更靠谱的答案 (19/16)：`/(?![AEIOU])[A-Z]/g`
 {% endnote %}
 
 没想到可以这么简单，先用 `{?!}` 排除掉 `AEIOU` 再匹配 `[A-Z]` 就可以了。`[^]` 的话只能排除单个字符。
@@ -87,19 +72,13 @@ I
 但是！虽然很接近，但这仍不是本题最短解。从哪里还可以再扣掉三个字符呢？
 
 {% note warning %}
-更更短的答案 (18/16)：
-```regexp
-/(?![EIOU])[B-Z]/g
-```
+更更短的答案 (18/16)：`/(?![EIOU])[B-Z]/g`
 {% endnote %}
 
 But hey! 你这也只少了一个字符啊，16 怎么来的呢？
 
 {% note success %}
-最短的答案 (16/16)：
-```regexp
-[^U+0001-AEIOU[-ÿ]
-```
+最短的答案 (16/16)：`[^U+0001-AEIOU[-ÿ]`
 {% endnote %}
 
 下面是抄来的解释：
@@ -116,13 +95,11 @@ But hey! 你这也只少了一个字符啊，16 怎么来的呢？
 ## TASK 4 RETRIEVE NUMBERS
 
 > Count the number of integers in a given string. Integers are, for example: 1, 2, 65, 2579, etc.
+
 > 别被这个 Count 迷惑了，它其实只是让你匹配整数一下而已。
 
 {% note success %}
-我的答案 (6/6)：
-```regexp
-/\d+/g
-```
+我的答案 (6/6)：`/\d+/g`
 {% endnote %}
 
 为什么这题不放在 TASK 1？
@@ -132,10 +109,7 @@ But hey! 你这也只少了一个字符啊，16 怎么来的呢？
 > Find all occurrences of 4 or more whitespace characters in a row throughout the string.
 
 {% note success %}
-我的答案 (9/9)：
-```regexp
-/\s{4,}/g
-```
+我的答案 (9/9)：`/\s{4,}/g`
 {% endnote %}
 
 这个没什么好说的，用 `{3,}` 就可以了
@@ -143,19 +117,18 @@ But hey! 你这也只少了一个字符啊，16 怎么来的呢？
 ## TASK 6 BROKEN KEYBOARD
 
 > Oh no! It seems my friends spilled beer all over my keyboard last night and my keys are super sticky now. Some of the time whennn I press a key, I get two duplicates. Can you ppplease help me fix thhhis?
+
 > 简单来说就是有三个连续相同字符就替替换成单个字符。例如：
-> ```txt
-> aaa -> a
-> aaaa -> aa
-> aaaaa -> aaa
-> aaaaaa -> aa
->```
+
+```txt
+aaa -> a
+aaaa -> aa
+aaaaa -> aaa
+aaaaaa -> aa
+```
 
 {% note warning %}
-我的答案 (11/11)：
-```regexp
-/(.)\1{2}/g
-```
+我的答案 (11/11)：`/(.)\1{2}/g`
 {% endnote %}
 
 匹配任意一个字符非常简单，但如果用 `(.){3}` 匹配并用 `$1` 替换的话，你会发现所有连续的字符都会被判定为替换，例如 `abcdefg`
@@ -169,36 +142,20 @@ But hey! 你这也只少了一个字符啊，16 怎么来的呢？
 虽然读者应该都知道一个 IPv4 地址长啥样，但还是要特别提一句，`1.01.1.1` 是不合法的。
 
 {% note warning %}
-我的答案 (85/39)：
-```regexp
-/^(?:(?:25[0-5]|2[0-4]\d|1\d{2}|\d{2}|\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d{2}|\d{2}|\d)$/
-```
+我的答案 (85/39)：`/^(?:(?:25[0-5]|2[0-4]\d|1\d{2}|\d{2}|\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d{2}|\d{2}|\d)$/`
 {% endnote %}
 
 首先每一位不可能大于 `255`，但正则没有办法直接比较数字的大小，所以只能拆开了判断。
 
 - 如果是三位数
   - 如果第一位是 2
-    - 如果第二位是 5，第三位就可以是 `[0-5]`
-      ```regexp
-      (?:25[0-5])
-      ```
-    - 如果第二位是 `[0-4]`，第三位就可以是 `\d`
-      ```regexp
-      (?:2[0-4]\d)
-      ```
-  - 如果第二位是 1，后 `2` 位就可以是 `\d`
-    ```regex
-    (?:1\d{2})
-    ```
-- 如果是 2 位数，那么这 `2` 位都可以是 `\d`
-  ```regexp
-  (?:\d{2})
-  ```
-- 如果是一位数，那就只能是 `\d`，因此可以和 2 位数结合起来
-  ```regexp
-  (?:\d{1,2})
-  ```
+    - 如果第二位是 5，第三位就可以是 `[0-5]`，所以`(?:25[0-5])`
+    - 如果第二位是 `[0-4]`，第三位就可以是 `\d`，所以：`(?:2[0-4]\d)`
+  - 如果第二位是 1，后 `2` 位就可以是 `\d`，所以：`(?:1\d{2})`
+
+- 如果是 2 位数，那么这 `2` 位都可以是 `\d`，所以：`(?:\d{2})`
+- 如果是一位数，那就只能是 `\d`，因此可以和 2 位数结合起来。所以：`(?:\d{1,2})`
+
 {% note info %}
 这里确实有个小问题就是，`\d{1,2}` 是可以匹配到 `01` 的，在 IPv4 地址中并不合法，但题目并没有针对这一点的测试，所以如果在意的话就不要放在一起了。
 {% endnote %}
@@ -208,23 +165,14 @@ But hey! 你这也只少了一个字符啊，16 怎么来的呢？
 (?:25[0-5]|2[0-4]\d|1\d{2}|\d{2}|\d)
 ```
 
-然后前三「个」数字后都会跟一个点 `.`：
-```regexp
-(?:NUM\.){3}
-```
+然后前三「个」数字后都会跟一个点 `.`，所以：`(?:NUM\.){3}`
 
-最后再附上一「个」数字，并标注开头和结尾：
-```regexp
-^(?:NUM\.){3}NUM$
-```
+最后再附上一「个」数字，并标注开头和结尾，所以：`^(?:NUM\.){3}NUM$`
 
 突然想到，数字后面可以是点 `.`，也可以是结尾 `$`，那我就可以把这两者合并：
 
 {% note warning %}
-我的优化后答案 (57/39)：
-```regexp
-/^(?:(?:25[0-5]|2[0-4]\d|1\d{2}|\d{2}|\d)(?:\.|$)){4}\b$/
-```
+我的优化后答案 (57/39)：`/^(?:(?:25[0-5]|2[0-4]\d|1\d{2}|\d{2}|\d)(?:\.|$)){4}\b$/`
 {% endnote %}
 
 注意这个 `\b`，如果不加的话 `1.1.1.1.` 也会被匹配到，报错：
@@ -238,20 +186,13 @@ But hey! 你这也只少了一个字符啊，16 怎么来的呢？
 ## TASK 8 HTML TAGS(OPTIONAL)
 
 > Strip all HTML tags from a string. HTML tags are enclosed in < and >. The regex will be applied on a line-by-line basis, meaning partial tags will need to be handled by the regex. Don't worry about opening or closing tags; we just want to get rid of them all. Note: This task is meant to be a learning exercise, and not necessarily the best way to parse HTML.
+
 > 把所有 HTML 标签删掉（用空字符串替代）。这里的 HTML 标签范围比较广，形如 `<body>` `</br>` 甚至 `<html + 行尾` `行首 + script>` 这种不闭合的都算在内。
+
 > 至于标签的名字无所谓，题目保证 `<` `>` 不算在内。
 
 {% note warning %}
-我的答案 (26/14)：
-REGULAR EXPRESSION
-```regexp
-/(?:^|<)[^<>]*>|<[^<>]*/mg
-```
-
-SUBSTITUTION
-```
-
-```
+我的答案 (26/14)：`s/(?:^|<)[^<>]*>|<[^<>]*//mg`
 {% endnote %}
 
 首先想到的就是左右一个 `<>`，然后中间用 `.`填充。前面再加上一个可选的 `/`。（关于这里要不要加上对 `/` 的判断不能确定，毕竟标签内部的内容只要不是 `<` `>` 什么都行，所以暂时存疑）
@@ -261,11 +202,13 @@ SUBSTITUTION
 ```
 
 提交一下会有如下报错：
+
 > Test 3/15: Your pattern is too greedy, and it is consuming the text between two tags. You're incorrectly consuming the string foo in the following example: `<div>foo</div>`.
 
 经过测试会发现，`<html>foo</html>` 确实会被整段替换掉。那就
 
 所以打开 Ungreedy 开关再试试：
+
 > Test 11/15: Also remove empty tags: <>.
 
 没有考虑到空标签，好吧，这个好解决，把 `.` 也用 `*` 标记为可选或多个：
@@ -282,6 +225,7 @@ SUBSTITUTION
 ```
 
 结果分数还更低了：
+
 >Test 5/15: Your pattern is not working. I believe it's stripping more than it should when applied to the text `before<br>after`. You can read about negated character classes here.
 
 报错给出了一个例子 `before<br>after`，这个例子会把 `before<br>` 都匹配到，看来是标签的内容匹配出了问题，把左边这个 `<` 当做了标签名字的一部分，然后整体变成了左边未闭合的标签，那我就把匹配标签名称的 `.` 扣掉 `<>` 这两个符号：

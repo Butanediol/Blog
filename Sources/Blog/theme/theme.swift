@@ -176,21 +176,19 @@ private struct XNHThemePostCard<Site: Website>: Component {
     let item: Item<Site>
 
     var body: Component {
-        Link(url: item.path.absoluteString) {
-            SystemWindow(scaleDown: true) {
-                SystemTitleBar {
-                    SystemCloseButton()
-                    SystemTitle(item.title)
-                }
-                SystemSeparator()
-                if item.description != "" {
-                    SystemWindowPane {
-                        Paragraph(item.description)
-                        Link(url: item.path.absoluteString) {
-                            SystemButton("阅读更多")
-                        }
-                        .style("float: right;")
+        SystemWindow(scaleDown: true) {
+            SystemTitleBar {
+                SystemCloseButton()
+                SystemTitle(item.title)
+            }
+            SystemSeparator()
+            if item.description != "" {
+                SystemWindowPane {
+                    Paragraph(item.description)
+                    Link(url: item.path.absoluteString) {
+                        SystemButton("阅读")
                     }
+                    .style("float: right;")
                 }
             }
         }
@@ -225,7 +223,11 @@ private struct XNHThemeHeader<Site: Website>: Component {
 
             SystemWindow {
                 SystemTitleBar {
-                    SystemTitle(context.site.name)
+                    SystemTitle {
+                        Link(url: "/") {
+                            Span(context.site.name)
+                        }
+                    }
                 }
             }
         }

@@ -14,21 +14,18 @@ public extension Plugin {
 
 public extension Modifier {
     static func note() -> Self {
-        return Modifier(target: .codeBlocks) { html, markdown in
-            guard let content = markdown.firstSubstring(between: .prefix("```note."), and: .suffix("\nendnote\n```")),
-                  let noteTypeString = content.split(separator: "\n").first,
-                  let noteType = NoteType(rawValue: String(noteTypeString))
+        return Modifier(target: .paragraphs) { html, markdown in
+            guard let content = markdown.firstSubstring(between: .prefix("{% note "), and: .suffix("{% endnote %}")),
+                let noteTypeString = content.split(separator: " ").first,
+                let noteType = NoteType(rawValue: String(noteTypeString))
             else {
                 return html
             }
 
-            let contentString = content
-                .split(separator: "\n")
-                .dropFirst()
-                .joined()
+            let inner = content.replacingOccurrences(of: "\\`", with: "`").split(separator: "\n").dropFirst().joined()
 
             return Div {
-                Markdown(contentString)
+                Markdown(inner)
             }
             .class("note")
             .class("note-\(noteType.rawValue)")
