@@ -1,0 +1,132 @@
+.center {
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.dialog-text {
+    font-family: Chicago_12, 'Noto Serif SC';
+}
+
+.title, .h1, .h2, .h3 {
+    font-family: Chicago_12, 'Noto Serif SC' !important;
+}
+
+/*Table*/
+table {
+    border-color: #000000;
+    border: 2px solid;
+    box-shadow: 2px 2px;
+    margin-bottom: 1.5em;
+    padding: 10px;
+}
+
+/*Note*/
+.note {
+    border: 2px solid;
+    padding: .7rem;
+}
+
+.note-primary {
+    box-shadow: 2px 2px #6944ba;
+    border-color: #6944ba;
+    background-color: #f4f0f9;
+}
+
+.note-primary {
+    box-shadow: 2px 2px #777777;
+    border-color: #777777;
+    background-color: #f7f7f7;
+}
+
+.note-success {
+    box-shadow: 2px 2px #74b666;
+    border-color: #74b666;
+    background-color: #f1f8f1;
+}
+
+.note-danger {
+    box-shadow: 2px 2px #c95c54;
+    border-color: #c95c54;
+    background-color: #faf1f2;
+}
+
+.note-warning {
+    box-shadow: 2px 2px #e6b05f;
+    border-color: #e6b05f;
+    background-color: #fcf8e8;
+}
+
+.note-info {
+    box-shadow: 2px 2px #5589c5;
+    border-color: #5589c5;
+    background-color: #f0f7fa;
+}
+
+.note-light {
+    box-shadow: 2px 2px #0f0f0f;
+    border-color: #0f0f0f;
+    background-color: #fefefe;
+}
+
+/*Spalsh syntax highlighting*/
+pre {
+    border-color: #000000;
+    border: 2px solid;
+    box-shadow: 2px 2px;
+    margin-bottom: 1.5em;
+    padding: 10px;
+}
+
+pre code {
+    font-family: monospace;
+    display: block;
+    padding: 0 20px;
+    color: #000000;
+    line-height: 1.4em;
+    font-size: 0.95em;
+    overflow-x: auto;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+}
+
+pre code .keyword {
+    color: #000000;
+    font-weight: 600;
+}
+
+pre code .type {
+    color: #5c6166;
+}
+
+pre code .call {
+    color: #005cb4;
+}
+
+pre code .property {
+    color: #007569;
+}
+
+pre code .number {
+    color: #000000;
+    font-weight: 600;
+}
+
+pre code .string {
+    color: #588500;
+}
+
+pre code .comment {
+    color: #6b8a94;
+    font-style: italic;
+}
+
+pre code .dotAccess {
+    color: #92b300;
+}
+
+pre code .preprocessing {
+    color: #b68a00;
+}
